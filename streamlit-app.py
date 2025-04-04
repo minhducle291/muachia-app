@@ -45,7 +45,7 @@ ma_sieu = st.sidebar.selectbox("Mã Siêu Thị", ["Tất cả"] + sorted(ma_sie
 if ma_sieu != "Tất cả":
     df = df[df['Mã siêu thị'] == ma_sieu]
 
-# Lọc theo Mã siêu thị (có tìm kiếm)
+# Lọc theo Miền (có tìm kiếm)
 mien_options = df['Miền'].unique().tolist()
 mien = st.sidebar.selectbox("Miền", ["Tất cả"] + sorted(mien_options), index=0)
 if mien != "Tất cả":
