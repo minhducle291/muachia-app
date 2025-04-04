@@ -20,9 +20,10 @@ df = pd.read_excel(file_path)
 df["Ngày khai trương"] = pd.to_datetime(df["Ngày khai trương"]).dt.date
 df["Ngày nhận hàng"] = df["Ngày nhận hàng"].dt.date
 df["Mã siêu thị"] = df["Mã siêu thị"].astype(str)
-df['Số lượng cần mua'] = round(df['Số lượng cần mua'], 1).astype(int)
+df['Tổng nhu cầu'] = round(df['Tổng nhu cầu'], 1).astype(int)
 # Đổi tên cột nếu cần để đồng bộ với bộ lọc
-df.columns = ['Ngày khai trương', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng', 'Nhóm hàng 2', 'Số lượng SKU', 'Số lượng cần mua']
+df.columns = ['Ngày khai trương', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng',
+              'Nhóm hàng 2', 'Số lượng SKU', 'Tổng nhu cầu','SL Notify']
 # endregion
 
 # Tiêu đề ứng dụng
@@ -121,4 +122,3 @@ st.download_button(
     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 )
 # endregion
-
