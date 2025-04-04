@@ -20,7 +20,7 @@ df["Mã siêu thị"] = df["Mã siêu thị"].astype(str)
 df['Số lượng cần mua'] = round(df['Số lượng cần mua'], 1).astype(int)
 
 # Đổi tên cột nếu cần để đồng bộ với bộ lọc
-df.columns = ['Ngày khai trương', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Ngành hàng', 'Nhóm hàng 2', 'Số lượng SKU', 'Số lượng cần mua']
+df.columns = ['Ngày khai trương', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng', 'Nhóm hàng 2', 'Số lượng SKU', 'Số lượng cần mua']
 
 # Sắp xếp dữ liệu theo ngày khai trương mới nhất
 #df = df.sort_values(by="Ngày khai trương", ascending=False)
