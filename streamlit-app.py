@@ -45,6 +45,12 @@ ma_sieu = st.sidebar.selectbox("Mã Siêu Thị", ["Tất cả"] + sorted(ma_sie
 if ma_sieu != "Tất cả":
     df = df[df['Mã siêu thị'] == ma_sieu]
 
+# Lọc theo Mã siêu thị (có tìm kiếm)
+mien_options = df['Miền'].unique().tolist()
+mien = st.sidebar.selectbox("Miền", ["Tất cả"] + sorted(mien_options), index=0)
+if mien != "Tất cả":
+    df = df[df['Miền'] == mien]
+
 # Lọc theo Ngành hàng (có tìm kiếm)
 nganh_hang_options = df["Ngành hàng"].dropna().unique().tolist()
 nganh_hang = st.sidebar.selectbox("Ngành Hàng", ["Tất cả"] + sorted(nganh_hang_options), index=0)
