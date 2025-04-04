@@ -9,7 +9,7 @@ wide_space_default()
 
 # Đọc dữ liệu từ file Excel
 report_date = pd.to_datetime("today").strftime("%Y-%m-%d")
-file_path = r'D:/TASK MUA CHIA/Cảnh báo khai trương/data/data '+ str(report_date) + '.xlsx'
+file_path = 'data '+ str(report_date) + '.xlsx'
 df = pd.read_excel(file_path)
 
 # Chuyển đổi định dạng cột\
