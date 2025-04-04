@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 from io import BytesIO
+import datetime
 
 def wide_space_default():
     st.set_page_config(layout='wide')
@@ -25,31 +26,34 @@ df.columns = ['Ngày khai trương', 'Ngày nhận hàng', 'Mã siêu thị', 'T
 #df = df.sort_values(by="Ngày khai trương", ascending=False)
 
 # Tiêu đề ứng dụng
+date = pd.to_datetime("today").strftime("%d/%m/%Y")
 st.title("🔎 Kiểm tra nhu cầu siêu thị khai trương")
+# Thêm dòng chữ nhỏ, nghiêng bên dưới bằng HTML
+st.markdown(f"<span style='font-size: 14px; font-style: italic;'>Dữ liệu cập nhật ngày {date}</span>", unsafe_allow_html=True)
 
 # Bộ lọc
-st.sidebar.header("Bộ Lọc ≽^•⩊•^≼")
+st.sidebar.header("Bộ Lọc")
 
 # Lọc theo Ngày khai trương
-ngay_khai_truong = st.sidebar.date_input("📅 Ngày khai trương", None)
+ngay_khai_truong = st.sidebar.date_input("Ngày khai trương", None)
 if ngay_khai_truong:
     df = df[df['Ngày khai trương'] == pd.to_datetime(ngay_khai_truong).date()]
 
 # Lọc theo Mã siêu thị (có tìm kiếm)
 ma_sieu_options = df['Mã siêu thị'].unique().tolist()
-ma_sieu = st.sidebar.selectbox("🏚️ Mã Siêu Thị", ["Tất cả"] + sorted(ma_sieu_options), index=0)
+ma_sieu = st.sidebar.selectbox("Mã Siêu Thị", ["Tất cả"] + sorted(ma_sieu_options), index=0)
 if ma_sieu != "Tất cả":
     df = df[df['Mã siêu thị'] == ma_sieu]
 
 # Lọc theo Ngành hàng (có tìm kiếm)
 nganh_hang_options = df["Ngành hàng"].dropna().unique().tolist()
-nganh_hang = st.sidebar.selectbox("🍉 Ngành Hàng", ["Tất cả"] + sorted(nganh_hang_options), index=0)
+nganh_hang = st.sidebar.selectbox("Ngành Hàng", ["Tất cả"] + sorted(nganh_hang_options), index=0)
 if nganh_hang != "Tất cả":
     df = df[df["Ngành hàng"] == nganh_hang]
 
 # Lọc theo Nhóm hàng 2 (có tìm kiếm)
 nhom_hang_options = df["Nhóm hàng 2"].dropna().unique().tolist()
-nhom_hang = st.sidebar.selectbox("🥑 Nhóm Hàng 2", ["Tất cả"] + sorted(nhom_hang_options), index=0)
+nhom_hang = st.sidebar.selectbox("Nhóm Hàng 2", ["Tất cả"] + sorted(nhom_hang_options), index=0)
 if nhom_hang != "Tất cả":
     df = df[df["Nhóm hàng 2"] == nhom_hang]
 
