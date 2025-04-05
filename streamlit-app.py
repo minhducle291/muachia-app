@@ -22,7 +22,7 @@ df["Ngày nhận hàng"] = df["Ngày nhận hàng"].dt.date
 df["Mã siêu thị"] = df["Mã siêu thị"].astype(str)
 df['Tổng nhu cầu'] = round(df['Tổng nhu cầu'], 1).astype(int)
 # Đổi tên cột nếu cần để đồng bộ với bộ lọc
-df.columns = ['Ngày khai trương', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng',
+df.columns = ['Ngày khai trương','Thứ (Khai trương)', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng',
               'Nhóm hàng 2', 'Số lượng SKU', 'Tổng nhu cầu','SL Notify']
 # endregion
 
