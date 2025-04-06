@@ -13,7 +13,7 @@ wide_space_default()
 # region Đọc dữ liệu cần đẩy lên Web
 # Đọc dữ liệu từ file Excel
 report_date = pd.to_datetime("today").strftime("%Y-%m-%d")
-file_path = 'data '+ str(report_date) + '.xlsx'
+file_path = 'data-'+ str(report_date) + '.xlsx'
 df = pd.read_excel(file_path)
 
 # Chuyển đổi định dạng cột\
@@ -22,7 +22,7 @@ df["Ngày nhận hàng"] = df["Ngày nhận hàng"].dt.date
 df["Mã siêu thị"] = df["Mã siêu thị"].astype(str)
 df['Tổng nhu cầu'] = round(df['Tổng nhu cầu'], 1).astype(int)
 # Đổi tên cột nếu cần để đồng bộ với bộ lọc
-df.columns = ['Ngày khai trương','Thứ (Khai trương)', 'Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng',
+df.columns = ['Ngày khai trương', 'Thứ (Khai trương)','Ngày nhận hàng', 'Mã siêu thị', 'Tên siêu thị', 'Miền', 'Ngành hàng',
               'Nhóm hàng 2', 'Số lượng SKU', 'Tổng nhu cầu','SL Notify']
 # endregion
 
@@ -32,7 +32,7 @@ st.title("🔎 Kiểm tra nhu cầu siêu thị khai trương")
 # region Thông tin thời gian cập nhật GitHub
 REPO_OWNER = "minhducle291"
 REPO_NAME = "muachia-app"
-FILE_PATH = "data 2025-04-05.xlsx"
+FILE_PATH = "data-2025-04-06.xlsx"
 
 def get_last_commit_time(owner, repo, file_path):
     url = f"https://api.github.com/repos/{owner}/{repo}/commits?path={file_path}&page=1&per_page=1"
